@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gomoku with the male fly</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="mark">
+        <img class="mark-badge" src="fruit-fly.png" alt="">
+        <div>
+          <h1>Gomoku <span>with the male fly</span></h1>
+          <p class="lede">Five in a row against a circuit from the male fruit-fly central nervous system.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <strong>male-cns:v1.0</strong>
+        You are black. The fly is amber.
+      </div>
+    </header>
+
+    <p class="status" id="status">Your move.<small>Black opens on the 15×15 board.</small></p>
+
+    <div class="stage">
+      <section class="panel board-wrap">
+        <div class="scene" id="scene">
+          <div class="board-3d" id="board3d">
+            <div class="slab" aria-hidden="true"></div>
+            <canvas id="board" class="board-canvas" width="720" height="720" aria-label="Gomoku board"></canvas>
+            <div id="stones"></div>
+          </div>
+          <div id="live-fly" class="fly-rig" aria-hidden="true">
+            <div class="fly3d">
+              <div class="wing wing-l"></div>
+              <div class="wing wing-r"></div>
+              <div class="abdomen"></div>
+              <div class="thorax"></div>
+              <div class="head">
+                <i class="eye eye-l"></i>
+                <i class="eye eye-r"></i>
+              </div>
+              <i class="leg l1"></i>
+              <i class="leg l2"></i>
+              <i class="leg l3"></i>
+              <i class="leg r1"></i>
+              <i class="leg r2"></i>
+              <i class="leg r3"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel side">
+        <p class="panel-label">Connectome, in the shape of the head</p>
+        <canvas id="brain" class="brain-canvas" width="640" height="640" aria-label="Fly circuit activity"></canvas>
+        <ul class="legend">
+          <li><i class="swatch" style="background:#e2b657"></i>acetylcholine</li>
+          <li><i class="swatch" style="background:#7eb8c9"></i>GABA</li>
+          <li><i class="swatch" style="background:#8fbe6a"></i>glutamate</li>
+          <li><i class="swatch" style="background:#c58bd4"></i>modulatory</li>
+        </ul>
+        <ul class="active-list" id="active"></ul>
+        <div class="controls">
+          <button class="action" id="new-game" type="button">New game</button>
+          <button class="action" id="undo" type="button">Undo</button>
+          <label class="slider">Focused
+            <input id="temp" type="range" min="0" max="1.4" step="0.05" value="0">
+            Restless
+          </label>
+        </div>
+        <details class="about">
+          <summary>What is actually playing</summary>
+          <p class="counts" id="counts"></p>
+          <p>
+            The nodes are cell types from the public male <i>Drosophila</i> CNS connectome,
+            not a cartoon of all 166,700 neurons. Visual types see each empty intersection.
+            Synapses among those types, their strongest visual relays, the male courtship
+            types, and descending neurons then settle for eight steps. Acetylcholine excites.
+            GABA and glutamate inhibit. A linear readout, fit on this frozen circuit, ranks
+            the squares. The synaptic weights were not trained.
+          </p>
+          <p>
+            Source: neuPrint <code>male-cns:v1.0</code>, via the
+            <a href="https://reiserlab.github.io/celltype-explorer-drosophila-male-cns/">Male CNS Cell Type Explorer</a>
+            snapshot of 9 September 2026. Dataset home:
+            <a href="https://male-cns.janelia.org/">male-cns.janelia.org</a>.
+            This page sits next to the natverse <code>malecns</code> package and is not part of that package.
+          </p>
+        </details>
+      </aside>
+    </div>
+  </div>
+  <script src="circuit.js"></script>
+  <script src="brain.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
